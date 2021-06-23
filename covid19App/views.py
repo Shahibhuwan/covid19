@@ -21,9 +21,11 @@ def index(request):
             data = False
         except:
             data = True
+    result = requests.get('https://covid19.mohp.gov.np/covid/api/confirmedcases?fbclid=IwAR3hnWbCv_vSsuyAJChr_WhxUul4eACxnziA5zvqquyZY4wAO0-Z3O41hEg').json()
+    nepal = result['nepal']
     return render(request , 'index.html' ,
                   {'globalSummary' : globalSummary ,
-                   'countries' : countries})
+                   'countries' : countries,'nepal':nepal})
 
 
 def nepal(request):
